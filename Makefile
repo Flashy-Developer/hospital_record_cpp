@@ -1,4 +1,4 @@
-CPP_NOT_MAIN = $(shell find . -type f -name 'ft_*.cpp')
+CPP_NOT_MAIN = $(shell find . -type f -name 'ft_*.cpp' -or -name 'class_*.cpp')
 CPP_MAIN = $(shell find . -type f -name 'main.cpp')
 CPP_TEST = $(shell find . -type f -name 'test.cpp')
 

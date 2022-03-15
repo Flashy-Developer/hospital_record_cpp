@@ -26,7 +26,7 @@ class	records
 class	patient: public records
 {
 	public:
-		string	*patient_name = &user;
+		string	*patient_name = &fullname;
 };
 
 class	admin: public records
