@@ -1,7 +1,9 @@
 #ifndef OHMYLIB_CPP
 # define OHMYLIB_CPP
 # include <iostream>
+# include <fstream>
 # include <string>
+# include <cstring>
 # include <ctime>
 
 using namespace std;
@@ -12,11 +14,11 @@ class	records
 		string	user = "";
 		string	data = "";
 		string	date = "";
+		string	fullname = "";
 
 	public:
 		int		check_user(void);
 		int		check_user(string pass);
-		void	load_data(void);
 		void	show_records(void);
 		void	show_records(string user);
 };
@@ -31,11 +33,18 @@ class	admin: public records
 {
 	protected:
 		string	patient_name;
-		string	pwd;
+		string	password;
 
 	protected:
-		int		check_admin();
 		void	add_records();
+};
+
+class display
+{
+	public:
+		void	show_menu(void);
+		int		login_menu(void);
+		int		select_menu(int role);
 };
 
 string	get_date(void);
