@@ -1,5 +1,5 @@
-#ifndef OHMYLIB_CPP
-# define OHMYLIB_CPP
+#ifndef OHMYLIB_HPP
+# define OHMYLIB_HPP
 # include <iostream>
 # include <fstream>
 # include <string>

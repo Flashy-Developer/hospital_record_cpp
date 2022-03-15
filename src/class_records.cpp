@@ -1,4 +1,4 @@
-#include "../includes/ohmylib.cpp"
+#include "../includes/ohmylib.hpp"
 
 int	records::check_user(void)
 {

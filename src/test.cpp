@@ -1,4 +1,4 @@
-#include "../includes/ohmylib.cpp"
+#include "../includes/ohmylib.hpp"
 
 int main( )
 {
