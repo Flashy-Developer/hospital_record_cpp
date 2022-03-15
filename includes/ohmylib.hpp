@@ -44,7 +44,7 @@ class display
 	public:
 		void	show_menu(void);
 		int		login_menu(void);
-		int		select_menu(int role);
+		int		select_main_menu(void);
 };
 
 string	get_date(void);

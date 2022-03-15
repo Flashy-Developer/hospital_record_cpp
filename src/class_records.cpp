@@ -11,7 +11,7 @@ int	records::check_user(void)
 		date = raw_data.substr(0, raw_data.find(","));
 		raw_data = raw_data.substr(raw_data.find(",") + 1, raw_data.length());
 		data = raw_data.substr(0, raw_data.find(","));
-		if (name == user)
+		if (name == fullname)
 		{
 			file.close();
 			return (1);
