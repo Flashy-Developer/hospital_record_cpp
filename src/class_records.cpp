@@ -1,6 +1,6 @@
 #include "../includes/ohmylib.hpp"
 
-int	records::check_user(void)
+int	records::login(void)
 {
 	string	raw_data, name, date, data;
 	fstream	file("records.txt");
@@ -21,16 +21,14 @@ int	records::check_user(void)
 	return (0);
 }
 
-int	records::check_user(string pwd)
+int	records::login(string pwd)
 {
 	string	raw_data, username, pass;
 	fstream	file("admin.txt");
 	while (getline (file, raw_data)) {
 		raw_data = raw_data.substr(0, raw_data.length() - 1);
 		username = raw_data.substr(0, raw_data.find(","));
-		cout << username << endl;
 		pass = raw_data.substr(raw_data.find(",") + 1, raw_data.length());
-		cout << pass << endl;
 		if (username == user && pwd == pass)
 		{
 			file.close();

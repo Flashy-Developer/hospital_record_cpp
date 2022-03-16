@@ -6,6 +6,12 @@
 # include <cstring>
 # include <ctime>
 
+#ifdef _WIN32
+# define clear()	system("cls")
+#else
+# define clear()	system("clear")
+#endif
+
 using namespace std;
 
 class	records
@@ -17,8 +23,8 @@ class	records
 		string	fullname = "";
 
 	public:
-		int		check_user(void);
-		int		check_user(string pass);
+		int		login(void);
+		int		login(string pass);
 		void	show_records(void);
 		void	show_records(string user);
 };
@@ -31,22 +37,23 @@ class	patient: public records
 
 class	admin: public records
 {
-	protected:
+	public:
 		string	patient_name;
 		string	password;
 
-	protected:
-		void	add_records();
+	public:
+		void	add_records(void);
 };
 
 class display
 {
 	public:
-		void	show_menu(void);
-		int		login_menu(void);
+		void	admin_menu(void);
+		void	patient_menu(void);
 		int		select_main_menu(void);
 };
 
 string	get_date(void);
+int		check_name(string text);
 
 #endif

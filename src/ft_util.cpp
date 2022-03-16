@@ -13,3 +13,17 @@ string	get_date(void)
 	+ to_string(time_now->tm_min);
 	return (date);
 }
+
+int	check_name(string text)
+{
+	size_t	i;
+
+	i = 0;
+	while (text[i])
+	{
+		if (!isalpha(text[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
