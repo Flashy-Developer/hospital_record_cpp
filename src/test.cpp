@@ -7,7 +7,6 @@ int main(void)
 		int		role = 0;
 		display	mydisplay;
 		role = mydisplay.select_main_menu();
-		clear();
 		if (role == 1)
 			mydisplay.admin_menu();
 		else if (role == 2)

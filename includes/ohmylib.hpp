@@ -26,7 +26,7 @@ class	records
 		int		login(void);
 		int		login(string pass);
 		void	show_records(void);
-		void	show_records(string user);
+		void	show_records(string username);
 };
 
 class	patient: public records
@@ -43,6 +43,7 @@ class	admin: public records
 
 	public:
 		void	add_records(void);
+		int		remove_records(void);
 };
 
 class display
@@ -53,7 +54,8 @@ class display
 		int		select_main_menu(void);
 };
 
-string	get_date(void);
 int		check_name(string text);
+string	get_date(void);
+string	color(string str, unsigned char color);
 
 #endif

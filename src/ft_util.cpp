@@ -1,6 +1,6 @@
 #include "../includes/ohmylib.hpp"
 
-string	get_date(void)
+string get_date(void)
 {
 	string	date = "";
 	time_t init_time = time(0);
@@ -14,7 +14,7 @@ string	get_date(void)
 	return (date);
 }
 
-int	check_name(string text)
+int check_name(string text)
 {
 	size_t	i;
 
@@ -26,4 +26,9 @@ int	check_name(string text)
 		i++;
 	}
 	return (1);
+}
+
+string color(string str, unsigned char color)
+{
+	return ("\x1b[38;5;" + to_string(color) + "m" + str + "\e[0m");
 }
