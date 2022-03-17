@@ -2,10 +2,14 @@
 
 int main(void)
 {
+	display	mydisplay;
+
+	clear();
+	mydisplay.show_logo();
 	while (1)
 	{
 		int		role = 0;
-		display	mydisplay;
+
 		role = mydisplay.select_main_menu();
 		if (role == 1)
 			mydisplay.admin_menu();

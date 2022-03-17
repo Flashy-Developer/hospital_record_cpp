@@ -14,7 +14,17 @@
 
 using namespace std;
 
-class	records
+class display
+{
+	public:
+		void	show_logo(void);
+		void	admin_menu(void);
+		void	patient_menu(void);
+		void	header(string str);
+		int		select_main_menu(void);
+};
+
+class	records: public display
 {
 	public:
 		string	user = "";
@@ -23,10 +33,10 @@ class	records
 		string	fullname = "";
 
 	public:
-		int		login(void);
-		int		login(string pass);
-		void	show_records(void);
-		void	show_records(string username);
+		int	login(void);
+		int	login(string pass);
+		int	show_records(void);
+		int	show_records(string username);
 };
 
 class	patient: public records
@@ -44,14 +54,6 @@ class	admin: public records
 	public:
 		void	add_records(void);
 		int		remove_records(void);
-};
-
-class display
-{
-	public:
-		void	admin_menu(void);
-		void	patient_menu(void);
-		int		select_main_menu(void);
 };
 
 int		check_name(string text);

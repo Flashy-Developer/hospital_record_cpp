@@ -2,6 +2,9 @@
 
 void admin::add_records(void)
 {
+	clear();
+	header("Add Records");
+	cout << endl;
 	string	name, surname, buff;
 
 	date = get_date();
@@ -40,42 +43,90 @@ void admin::add_records(void)
 	old_file.close();
 	new_file.close();
 	remove("old_records.txt");
+	cout << endl;
+	cout << color("Add Records complete!\nPress Enter to continue...\n", 49);
+	(void) getchar();
 }
 
 int admin::remove_records(void)
 {
 	int		state = 0;
-	size_t	count = 0, i;
+	size_t	count = 0, i, space_size = 1;
 	string	buff, input;
 
-	rename("records.txt", "old_records.txt");
-	ifstream	old_file("old_records.txt");
-	ofstream	new_file("records.txt");
+	ifstream	old_file("records.txt");
 
 	clear();
+	header("Remove Records");
+	cout << endl;
 
-	while (getline(old_file, buff))
+	while (getline (old_file, buff))
+		count++;
+	old_file.close();
+
+	if (count == 0)
 	{
-		cout << "[" << to_string(count + 1) << "] " << buff << endl;
+		cout << color("No Records file!\n\n", 198);
+		cout << color("Press Enter to continue...\n", 49);
+		(void) getchar();
+		(void) getchar();
+		return (0);
+	}
+
+	count = 0;
+	cout << "index\tName\t\t\t\tdate\t\t\tdetails\n";
+	rename("records.txt", "old_records.txt");
+	old_file.open("old_records.txt");
+	while (getline (old_file, buff))
+	{
+		fullname = buff.substr(0, buff.find(","));
+
+		buff = buff.substr(buff.find(",") + 1, buff.length());
+		date = buff.substr(0, buff.find(","));
+
+		buff = buff.substr(buff.find(",") + 1, buff.length());
+		data = buff.substr(0, buff.find(","));
+
+		if (fullname.length() < 32)
+			space_size = 32 - fullname.length();
+
+		cout << "[" << to_string(count + 1) << "]\t" << fullname;
+
+		for (size_t i = 0; i < space_size; i++)
+			cout << " ";
+
+		cout << date;
+		if (date.length() < 16)
+			cout << "\t\t";
+		else
+			cout << "\t";
+		cout << data << endl;
 		count++;
 	}
 	old_file.close();
 
+	cout << endl;
+
 	do
 	{
-		if (count == 0)
-		{
-			cout << color("no Records file!\n", 198);
-			return (0);
-		}
-		cout << "Enter index of data you want to delete: ";
+		cout << "Enter index of data to delete or Enter q to exit: ";
 		cin >> input;
+		if (input == "q" || input == "Q")
+			state = 2;
 		for (i = 0; i < count; i++)
 			if (to_string(i + 1) == input)
 				state = 1;
 		if (!state)
 			cout << color("data not found! Enter index only!\n", 198);
 	} while (!state);
+
+	if (state == 2)
+	{
+		rename("old_records.txt", "records.txt");
+		return (1);
+	}
+
+	ofstream	new_file("records.txt");
 
 	i = 0;
 	old_file.open("old_records.txt");
@@ -88,6 +139,9 @@ int admin::remove_records(void)
 	old_file.close();
 	new_file.close();
 	remove("old_records.txt");
-	cout << "remove data Complete." << endl;
+	cout << endl;
+	cout << color("Remove Records complete!\nPress Enter to continue...\n", 49);
+	(void) getchar();
+	(void) getchar();
 	return (1);
 }

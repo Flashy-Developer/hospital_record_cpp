@@ -2,7 +2,7 @@
 
 int records::login(void)
 {
-	string	raw_data, name, date, data;
+	string	raw_data, name;
 	fstream	file("records.txt");
 	while (getline (file, raw_data))
 	{
@@ -40,17 +40,33 @@ int records::login(string pwd)
 	return (0);
 }
 
-void records::show_records(void)
+int records::show_records(void)
 {
-	size_t	space_size = 1;
-	string	raw_data, name, date, data;
+	size_t	 count = 0, space_size = 1;
+	string	raw_data;
 	fstream	file("records.txt");
 	clear();
+	header("all records");
 	cout << endl;
+
+	while (getline (file, raw_data))
+		count++;
+	file.close();
+
+	if (count == 0)
+	{
+		cout << color("No Records file!\n\n", 198);
+		cout << color("Press Enter to continue...\n", 49);
+		(void) getchar();
+		(void) getchar();
+		return (0);
+	}
+
+	file.open("records.txt");
 	cout << "Name\t\t\t\tdate\t\t\tdetails\n";
 	while (getline (file, raw_data))
 	{
-		name = raw_data.substr(0, raw_data.find(","));
+		fullname = raw_data.substr(0, raw_data.find(","));
 
 		raw_data = raw_data.substr(raw_data.find(",") + 1, raw_data.length());
 		date = raw_data.substr(0, raw_data.find(","));
@@ -58,10 +74,10 @@ void records::show_records(void)
 		raw_data = raw_data.substr(raw_data.find(",") + 1, raw_data.length());
 		data = raw_data.substr(0, raw_data.find(","));
 
-		if (name.length() < 32)
-			space_size = 32 - name.length();
+		if (fullname.length() < 32)
+			space_size = 32 - fullname.length();
 
-		cout << name;
+		cout << fullname;
 
 		for (size_t i = 0; i < space_size; i++)
 			cout << " ";
@@ -75,20 +91,25 @@ void records::show_records(void)
 	}
 	file.close();
 	cout << endl;
+	cout << color("Press Enter to continue...\n", 49);
+	(void) getchar();
+	(void) getchar();
+	return (1);
 }
 
-void records::show_records(string username)
+int records::show_records(string username)
 {
 	size_t	space_size = 0;
-	string	raw_data, name, date, data, space;
+	string	raw_data, fullname, space;
 	fstream	file("records.txt");
 
 	clear();
+	header(username + "'s Records");
 	cout << endl;
 	cout << "Name\t\t\t\tdate\t\t\tdetails\n";
 	while (getline (file, raw_data))
 	{
-		name = raw_data.substr(0, raw_data.find(","));
+		fullname = raw_data.substr(0, raw_data.find(","));
 
 		raw_data = raw_data.substr(raw_data.find(",") + 1, raw_data.length());
 		date = raw_data.substr(0, raw_data.find(","));
@@ -96,16 +117,28 @@ void records::show_records(string username)
 		raw_data = raw_data.substr(raw_data.find(",") + 1, raw_data.length());
 		data = raw_data.substr(0, raw_data.find(","));
 
-		if (name.length() < 32)
-			space_size = 32 - name.length();
-		space = "";
+		if (fullname == username)
+		{
+			if (fullname.length() < 32)
+				space_size = 32 - fullname.length();
 
-		for (size_t i = 0; i < space_size; i++)
-			space += " ";
+			cout << fullname;
 
-		if (username == name)
-			cout << name << space << date << "\t\t" << data << endl;
+			for (size_t i = 0; i < space_size; i++)
+				cout << " ";
+
+			cout << date;
+			if (date.length() < 16)
+				cout << "\t\t";
+			else
+				cout << "\t";
+			cout << data << endl;
+		}
 	}
 	cout << endl;
 	file.close();
+	cout << color("Press Enter to continue...\n", 49);
+	(void) getchar();
+	(void) getchar();
+	return (1);
 }
