@@ -9,7 +9,7 @@ void admin::add_records(void)
 	{
 		cout << "Enter Patient name: ";
 		cin >> name;
-		if (name.length() < 3)
+		if (name.length() < 3 || !check_name(name))
 			cout << color("Your name must more than 3 Alphabet\n", 198);
 	} while (name.find(",") != (size_t) -1 || name.length() < 3 || !check_name(name));
 
@@ -17,7 +17,7 @@ void admin::add_records(void)
 	{
 		cout << "Enter Patient surname: ";
 		cin >> surname;
-		if (surname.length() < 3)
+		if (surname.length() < 3 || !check_name(surname))
 			cout << color("Your surname must more than 3 Alphabet\n", 198);
 	} while (surname.find(",") != (size_t) -1 || surname.length() < 3 || !check_name(surname));
 
