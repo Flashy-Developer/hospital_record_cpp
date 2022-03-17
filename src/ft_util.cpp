@@ -9,8 +9,11 @@ string get_date(void)
 	date += to_string(time_now->tm_mday) + "/"	\
 	+ to_string(time_now->tm_mon) + "/"			\
 	+ to_string(time_now->tm_year + 1900) + " "	\
-	+ to_string(time_now->tm_hour) + ":"		\
-	+ to_string(time_now->tm_min);
+	+ to_string(time_now->tm_hour) + ":"		;
+	if (time_now->tm_min < 10)
+		date += "0" + to_string(time_now->tm_min);
+	else
+		date += to_string(time_now->tm_min);
 	return (date);
 }
 
