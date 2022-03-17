@@ -24,7 +24,8 @@ void admin::add_records(void)
 	fullname = name + " " + surname;
 
 	cout << "Enter patient details: ";
-	cin >> data;
+	getline(cin, data);
+	getline(cin, data);
 
 	rename("records.txt", "old_records.txt");
 	ifstream	old_file("old_records.txt");
