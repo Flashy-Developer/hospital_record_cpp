@@ -110,7 +110,7 @@ void display::patient_menu(void)
 	{
 		cout << "Enter Patient name: ";
 		cin >> name;
-		if (name.length() < 3) || !check_name(name))
+		if (name.length() < 3 || !check_name(name))
 			cout << color("Your name must more than 3 Alphabet\n", 198);
 	} while (name.find(",") != (size_t) -1 || name.length() < 3 || !check_name(name));
 
