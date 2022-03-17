@@ -9,16 +9,20 @@ void admin::add_records(void)
 	{
 		cout << "Enter Patient name: ";
 		cin >> name;
-		if (name.length() < 3 || !check_name(name))
+		if (name.length() < 3)
 			cout << color("Your name must more than 3 Alphabet\n", 198);
+		else if (!check_name(name))
+			cout << color("Your name must be Alphabet only! \n", 198);
 	} while (name.find(",") != (size_t) -1 || name.length() < 3 || !check_name(name));
 
 	do
 	{
 		cout << "Enter Patient surname: ";
 		cin >> surname;
-		if (surname.length() < 3 || !check_name(surname))
-			cout << color("Your surname must more than 3 Alphabet\n", 198);
+		if (surname.length() < 3)
+			cout << color("Your surname must more than 3 Alphabet!\n", 198);
+		else if (!check_name(surname))
+			cout << color("Your surname must be Alphabet only! \n", 198);
 	} while (surname.find(",") != (size_t) -1 || surname.length() < 3 || !check_name(surname));
 
 	fullname = name + " " + surname;
