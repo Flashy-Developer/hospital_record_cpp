@@ -1,3 +1,4 @@
+![alt text](https://github.com/Flashy-Developer/hospital_record_cpp/blob/master/icon72.png)
 # **Hospital Records System +**
 
 This is our c++ project which can add and remove records of patients when you log in as admin.
